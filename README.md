@@ -6,6 +6,7 @@
 
 
 <br>
+<br>
 
 # Code will be released soon
 
@@ -15,10 +16,10 @@ Star this project to get notified.
   <a href="#"><img src="https://user-images.githubusercontent.com/11280511/150838003-01136487-6671-4cc4-ae4d-bef8e60c605e.png"></a>
 </p>
 
-
+<br>
 <br>
 
-# How RePaint fills a missing image part using diffusion models
+# RePaint fills a missing image part using diffusion models
 
 <table border="0" cellspacing="0" cellpadding="0">
   <tr>
@@ -73,7 +74,7 @@ The blue region is unknown and filled by RePaint:
 
 <br>
 
-# How RePaint conditions the diffusion model on the known part
+# RePaint conditions the diffusion model on the known part
 
 - RePaint uses Denoising Diffusion Probabilistic Models.
 - We condition this process on the given image content.
