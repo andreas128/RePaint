@@ -1,5 +1,5 @@
 # RePaint
-**Inpainting using Denoising Diffusion Probabilistic Models** [[Paper]](https://bit.ly/3rPeXb2)
+**Inpainting using Denoising Diffusion Probabilistic Models** [[Paper]](https://bit.ly/3b1ABEb)
 
 ![Denoising_Diffusion_Inpainting_Animation](https://user-images.githubusercontent.com/11280511/150849757-5cd762cb-07a3-46aa-a906-0fe4606eba3b.gif)
 
@@ -35,7 +35,7 @@ Those parts are missing and therefore have to be filled by RePaint. <br> RePaint
 RePaint starts from pure noise. Then the image is denoised step-by-step.  <br> It uses the known part to fill the unknown part in each step.
 
 **Why does the noise level fluctuate during generation?** <br>
-Our noise schedule improves the harmony between the generated and <br> the known part [[4.2 Resampling]](https://bit.ly/3fTPs2T).
+Our noise schedule improves the harmony between the generated and <br> the known part [[4.2 Resampling]](https://bit.ly/3b1ABEb).
 
 
 <br>
@@ -86,7 +86,7 @@ The blue region is unknown and filled by RePaint:
 2) **Denoise one step:** Denoise the previous image for one step. This generates  <br> content for the unknown region conditioned on the known region.
 3) **Join:** Merge the images from both steps.
 
-Details are in Algorithm 1 on Page 4. [[Paper]](https://bit.ly/3IwCPH7)
+Details are in Algorithm 1 on Page 4. [[Paper]](https://bit.ly/3b1ABEb)
 
 
 <br>
@@ -94,7 +94,7 @@ Details are in Algorithm 1 on Page 4. [[Paper]](https://bit.ly/3IwCPH7)
 # How to harmonize the generated with the known part?
 
 - **Fail:** When using only the algorithm above, the filling is not well harmonized with the known part (n=1).
-- **Fix:** When applying the [[4.2 Resampling]](https://bit.ly/358b9tN) technique, the images are better harmonized (n>1).
+- **Fix:** When applying the [[4.2 Resampling]](https://bit.ly/3b1ABEb) technique, the images are better harmonized (n>1).
 
 <img width="1577" alt="Diffusion Model Resampling" src="https://user-images.githubusercontent.com/11280511/150822917-737c00b0-b6bb-439d-a5bf-e73238d30990.png">
 
@@ -112,14 +112,14 @@ Details are in Algorithm 1 on Page 4. [[Paper]](https://bit.ly/3IwCPH7)
 
 - Outperforms autoregressive-based and GAN-based SOTA methods for <br> all masks with significance 95% except for two inconclusive cases.
 - The user study was done for six different masks on three datasets.
-- RePaint outperformed SOTA methods in 42 of 44 cases. [[Paper]](https://bit.ly/3AwRtLN)
+- RePaint outperformed SOTA methods in 42 of 44 cases. [[Paper]](https://bit.ly/3b1ABEb)
 
 <br>
 
 # Explore the Visual Examples
 - Datasets: CelebA-HQ, ImageNet, Places2
 - Masks: Random strokes, half image, huge, sparse
-- Explore more examples like this in the [[Appendix]](https://bit.ly/3tRVgSJ).
+- Explore more examples like this in the [[Appendix]](https://bit.ly/3b1ABEb).
 
 
 <img width="1556" alt="Denosing Diffusion Inpainting Examples" src="https://user-images.githubusercontent.com/11280511/150864677-0eb482ae-c114-4b0b-b1e0-9be9574da307.png">
