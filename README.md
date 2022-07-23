@@ -1,23 +1,77 @@
 # RePaint
-**Inpainting using Denoising Diffusion Probabilistic Models** [[Paper]](https://bit.ly/3b1ABEb)
+**Inpainting using Denoising Diffusion Probabilistic Models**
+
+
+CVPR 2022 [[Paper]](https://bit.ly/3b1ABEb)
 
 ![Denoising_Diffusion_Inpainting_Animation](https://user-images.githubusercontent.com/11280511/150849757-5cd762cb-07a3-46aa-a906-0fe4606eba3b.gif)
 
 
+# Setup
 
-<br>
-<br>
+### Code
 
-# Code will be released soon
+```bash
+git clone https://github.com/andreas128/RePaint.git
+```
 
-Star this project to get notified.
+### Environment
+```bash
+pip install numpy torch blobfile tqdm pyYaml pillow    # e.g. torch 1.7.1+cu110.
+```
 
-<p align="center">
-  <a href="#"><img src="https://user-images.githubusercontent.com/11280511/150838003-01136487-6671-4cc4-ae4d-bef8e60c605e.png"></a>
-</p>
+### Download models and data
 
-<br>
-<br>
+```bash
+pip install --upgrade gdown && bash ./download.sh
+```
+
+That downloads the models for ImageNet, CelebA-HQ, and Places2.
+
+
+### Run example
+```bash
+python test.py --conf_path confs/face_example.yml
+```
+Find the output in `./log/face_example/inpainted`
+
+*Note: After refactoring the code, we did not reevaluate the experiments.*
+
+# FAQ
+
+**Which datasets and masks have a ready-to-use config file?**
+
+We provide config files for ImageNet (inet256), CelebA-HQ (c256) and Places2 (p256) for the masks "thin", "thick", "every second line", "super-resolution", "expand" and "half" in `./confs`. You can use them as shown in the example above.
+
+**How to prepare the test data?**
+
+We use [LaMa](https://github.com/saic-mdal/lama) for validation and test. Follow their instructions and add the images as specified in the config files. When you download the data using `download.sh`, you see examples of masks we used.
+
+**How to apply it to other image?**
+
+Copy the config file for the dataset that matches your data best (for faces `_c256`, for diverse images `_inet256`). Then set the `gt_path` and `mask_path` to where your input is. The masks have the value 255 for known regions and 0 for unknown areas (the ones that get generated).
+
+**How to train for your dataset?**
+
+Train using the [guided-diffusion](https://github.com/openai/guided-diffusion) repository. Note that RePaint is an inference scheme. We do not train or finetune the diffusion model but condition pre-trained models.
+
+**How to design a new schedule?**
+
+Adapt the inference schedule and visualize it using `python guided_diffusion/scheduler.py`. Then adapt a config file accordingly.
+
+**How to speed up the inference?**
+
+The following settings are in the `schedule_jump_params` key in the config files. You can visualize them as described above.
+
+- Reduce `t_T`, the total number of steps (without resampling). The lower it is, the more noise gets removed per step.
+- Reduce `jump_n_sample` to resample fewer times.
+- Apply resampling not from the beginning but only after a specific time by setting `start_resampling`.
+
+
+**Something is not answered here?**
+
+Please open an issue, and we will try to help you.
+
 
 # RePaint fills a missing image part using diffusion models
 
@@ -125,14 +179,12 @@ Details are in Algorithm 1 on Page 4. [[Paper]](https://bit.ly/3b1ABEb)
 <img width="1556" alt="Denosing Diffusion Inpainting Examples" src="https://user-images.githubusercontent.com/11280511/150864677-0eb482ae-c114-4b0b-b1e0-9be9574da307.png">
 
 
-
-
 <br>
 
-# Code will be released soon
 
-Star this project to get notified.
+# Acknowledgement
 
-<p align="center">
-  <a href="#"><img src="https://user-images.githubusercontent.com/11280511/150838003-01136487-6671-4cc4-ae4d-bef8e60c605e.png"></a>
-</p>
+This work was supported by the ETH Zürich Fund (OK), a Huawei Technologies Oy (Finland) project, and an Nvidia GPU grant.
+
+This repository is based on [guided-diffuion](https://github.com/openai/guided-diffusion.git) from OpenAI.
+Code Release of RePaint
