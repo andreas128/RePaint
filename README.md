@@ -79,7 +79,7 @@ The following settings are in the [schedule_jump_params](https://github.com/andr
 
 ## Issues
 
-**Something is not answered here?**
+**Do you have further questions?**
 
 Please open an [issue](https://github.com/andreas128/RePaint/issues), and we will try to help you.
 
