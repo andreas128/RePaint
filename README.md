@@ -4,7 +4,7 @@
 
 CVPR 2022 [[Paper]](https://bit.ly/3b1ABEb)
 
-[![Denoising_Diffusion_Inpainting_Animation](https://user-images.githubusercontent.com/11280511/150849757-5cd762cb-07a3-46aa-a906-0fe4606eba3b.gif)]()
+[![Denoising_Diffusion_Inpainting_Animation](https://user-images.githubusercontent.com/11280511/150849757-5cd762cb-07a3-46aa-a906-0fe4606eba3b.gif)](#)
 
 ## Setup
 
@@ -146,17 +146,17 @@ The blue region is unknown and filled by RePaint:
 
 # RePaint conditions the diffusion model on the known part
 
-- RePaint uses Denoising Diffusion Probabilistic Models.
-- We condition this process on the given image content.
+- RePaint uses a unconditionally trained Denoising Diffusion Probabilistic Models.
+- We condition during inference on the given image content.
 
-![Denoising_Diffusion_Probabilistic_Models_Inpainting_Method](https://user-images.githubusercontent.com/11280511/150822344-8e71070b-936d-4c5b-9298-ac29af266990.png)
+![Denoising Diffusion Probabilistic Models Inpainting Method](https://user-images.githubusercontent.com/11280511/180631151-59b6674b-bf2c-4501-8307-03c9f5f593ae.gif)
 
-**Intuition of one denoising step:**
+**Intuition of one conditoned denoising step:**
 1) **Sample the known part:** Add gaussian noise to the known regions of the image. <br> We obtain a noisy image that follows the denoising process exactly.
 2) **Denoise one step:** Denoise the previous image for one step. This generates  <br> content for the unknown region conditioned on the known region.
 3) **Join:** Merge the images from both steps.
 
-Details are in Algorithm 1 on Page 4. [[Paper]](https://bit.ly/3b1ABEb)
+Details are in Algorithm 1 on Page 5. [[Paper]](https://bit.ly/3b1ABEb)
 
 
 <br>
