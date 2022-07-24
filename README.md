@@ -203,4 +203,3 @@ Details are in Algorithm 1 on Page 5. [[Paper]](https://bit.ly/3b1ABEb)
 This work was supported by the ETH Zürich Fund (OK), a Huawei Technologies Oy (Finland) project, and an Nvidia GPU grant.
 
 This repository is based on [guided-diffuion](https://github.com/openai/guided-diffusion.git) from OpenAI.
-Code Release of RePaint
