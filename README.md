@@ -4,23 +4,22 @@
 
 CVPR 2022 [[Paper]](https://bit.ly/3b1ABEb)
 
-![Denoising_Diffusion_Inpainting_Animation](https://user-images.githubusercontent.com/11280511/150849757-5cd762cb-07a3-46aa-a906-0fe4606eba3b.gif)
-
+[![Denoising_Diffusion_Inpainting_Animation](https://user-images.githubusercontent.com/11280511/150849757-5cd762cb-07a3-46aa-a906-0fe4606eba3b.gif)]()
 
 ## Setup
 
-### Code
+### 1. Code
 
 ```bash
 git clone https://github.com/andreas128/RePaint.git
 ```
 
-### Environment
+### 2. Environment
 ```bash
 pip install numpy torch blobfile tqdm pyYaml pillow    # e.g. torch 1.7.1+cu110.
 ```
 
-### Download models and data
+### 3. Download models and data
 
 ```bash
 pip install --upgrade gdown && bash ./download.sh
@@ -29,13 +28,35 @@ pip install --upgrade gdown && bash ./download.sh
 That downloads the models for ImageNet, CelebA-HQ, and Places2, as well as the face example and example masks.
 
 
-### Run example
+### 4. Run example
 ```bash
 python test.py --conf_path confs/face_example.yml
 ```
 Find the output in `./log/face_example/inpainted`
 
-*Note: After refactoring the code, we did not reevaluate the experiments.*
+*Note: After refactoring the code, we did not reevaluate all experiments.*
+
+<br>
+
+# RePaint fills a missing image part using diffusion models
+
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><img alt="RePaint Inpainting using Denoising Diffusion Probabilistic Models Demo 1" src="https://user-images.githubusercontent.com/11280511/150766080-9f3d7bc9-99f2-472e-9e5d-b6ed456340d1.gif"></td>
+        <td><img alt="RePaint Inpainting using Denoising Diffusion Probabilistic Models Demo 2" src="https://user-images.githubusercontent.com/11280511/150766125-adf5a3cb-17f2-432c-a8f6-ce0b97122819.gif"></td>
+  </tr>
+</table>
+
+**What are the blue parts?** <br>
+Those parts are missing and therefore have to be filled by RePaint. <br> RePaint generates the missing parts inspired by the known parts.
+
+**How does it work?** <br>
+RePaint starts from pure noise. Then the image is denoised step-by-step.  <br> It uses the known part to fill the unknown part in each step.
+
+**Why does the noise level fluctuate during generation?** <br>
+Our noise schedule improves the harmony between the generated and <br> the known part [[4.2 Resampling]](https://bit.ly/3b1ABEb).
+
+<br>
 
 ## Details on data
 
@@ -86,26 +107,6 @@ Please open an [issue](https://github.com/andreas128/RePaint/issues), and we wil
 **Did you find a mistake?**
 
 Please create a pull request. For examply by clicking the pencil button on the top right on the github page.
-
-
-# RePaint fills a missing image part using diffusion models
-
-<table border="0" cellspacing="0" cellpadding="0">
-  <tr>
-    <td><img alt="RePaint Inpainting using Denoising Diffusion Probabilistic Models Demo 1" src="https://user-images.githubusercontent.com/11280511/150766080-9f3d7bc9-99f2-472e-9e5d-b6ed456340d1.gif"></td>
-        <td><img alt="RePaint Inpainting using Denoising Diffusion Probabilistic Models Demo 2" src="https://user-images.githubusercontent.com/11280511/150766125-adf5a3cb-17f2-432c-a8f6-ce0b97122819.gif"></td>
-  </tr>
-</table>
-
-**What are the blue parts?** <br>
-Those parts are missing and therefore have to be filled by RePaint. <br> RePaint generates the missing parts inspired by the known parts.
-
-**How does it work?** <br>
-RePaint starts from pure noise. Then the image is denoised step-by-step.  <br> It uses the known part to fill the unknown part in each step.
-
-**Why does the noise level fluctuate during generation?** <br>
-Our noise schedule improves the harmony between the generated and <br> the known part [[4.2 Resampling]](https://bit.ly/3b1ABEb).
-
 
 <br>
 
