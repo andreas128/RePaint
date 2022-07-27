@@ -180,7 +180,7 @@ Details are in Algorithm 1 on Page 5. [[Paper]](https://bit.ly/3b1ABEb)
 
 # User Study State-of-the-Art Comparison
 
-- Outperforms to autoregression-based and GAN-based SOTA methods, <br> with 95% significance for all masks except for two inconclusive cases.
+- Outperforms autoregression-based and GAN-based SOTA methods, <br> with 95% significance for all masks except for two inconclusive cases.
 - The user study was done for six different masks on three datasets.
 - RePaint outperformed SOTA methods in 42 of 44 cases. [[Paper]](https://bit.ly/3b1ABEb)
 
