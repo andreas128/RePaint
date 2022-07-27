@@ -66,9 +66,9 @@ We provide config files for ImageNet (inet256), CelebA-HQ (c256) and Places2 (p2
 
 **How to prepare the test data?**
 
-We use [LaMa](https://github.com/saic-mdal/lama) for validation and test. Follow their instructions and add the images as specified in the config files. When you download the data using `download.sh`, you see examples of masks we used.
+We use [LaMa](https://github.com/saic-mdal/lama) for validation and testing. Follow their instructions and add the images as specified in the config files. When you download the data using `download.sh`, you can see examples of masks we used.
 
-**How to apply it to other image?**
+**How to apply it to other images?**
 
 Copy the config file for the dataset that matches your data best (for faces `_c256`, for diverse images `_inet256`). Then set the [`gt_path`](https://github.com/andreas128/RePaint/blob/0fea066b52346c331cdf1bf7aed616c8c8896714/confs/face_example.yml#L70) and [`mask_path`](https://github.com/andreas128/RePaint/blob/0fea066b52346c331cdf1bf7aed616c8c8896714/confs/face_example.yml#L71) to where your input is. The masks have the value 255 for known regions and 0 for unknown areas (the ones that get generated).
 
@@ -138,20 +138,20 @@ The blue region is unknown and filled by RePaint:
 # Extreme Case 2: Upscale an image
 ![Denoising_Diffusion_Probabilistic_Models_Inpainting_Super_Resolution](https://user-images.githubusercontent.com/11280511/150818741-5ed19a0b-1cf8-4f28-9e57-2e4c12303c3e.png)
 
-- The inpainting only knows pixels with a strided access of 2.
+- The inpainting only knows pixels with a stridden access of 2.
 - A ratio of 3/4 of the image has to be filled.
-- This is equivalent to Super-Resolution with Nearest Neighbor kernel.
+- This is equivalent to Super-Resolution with the Nearest Neighbor kernel.
 
 <br>
 
 # RePaint conditions the diffusion model on the known part
 
-- RePaint uses a unconditionally trained Denoising Diffusion Probabilistic Models.
+- RePaint uses unconditionally trained Denoising Diffusion Probabilistic Models.
 - We condition during inference on the given image content.
 
 ![Denoising Diffusion Probabilistic Models Inpainting Method](https://user-images.githubusercontent.com/11280511/180631151-59b6674b-bf2c-4501-8307-03c9f5f593ae.gif)
 
-**Intuition of one conditoned denoising step:**
+**Intuition of one conditioned denoising step:**
 1) **Sample the known part:** Add gaussian noise to the known regions of the image. <br> We obtain a noisy image that follows the denoising process exactly.
 2) **Denoise one step:** Denoise the previous image for one step. This generates  <br> content for the unknown region conditioned on the known region.
 3) **Join:** Merge the images from both steps.
@@ -180,7 +180,7 @@ Details are in Algorithm 1 on Page 5. [[Paper]](https://bit.ly/3b1ABEb)
 
 # User Study State-of-the-Art Comparison
 
-- Outperforms autoregressive-based and GAN-based SOTA methods for <br> all masks with significance 95% except for two inconclusive cases.
+- Outperforms to autoregression-based and GAN-based SOTA methods, <br> with 95% significance for all masks except for two inconclusive cases.
 - The user study was done for six different masks on three datasets.
 - RePaint outperformed SOTA methods in 42 of 44 cases. [[Paper]](https://bit.ly/3b1ABEb)
 
