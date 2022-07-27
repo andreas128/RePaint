@@ -70,7 +70,7 @@ We use [LaMa](https://github.com/saic-mdal/lama) for validation and testing. Fol
 
 **How to apply it to other images?**
 
-Copy the config file for the dataset that matches your data best (for faces `_c256`, for diverse images `_inet256`). Then set the [`gt_path`](https://github.com/andreas128/RePaint/blob/0fea066b52346c331cdf1bf7aed616c8c8896714/confs/face_example.yml#L70) and [`mask_path`](https://github.com/andreas128/RePaint/blob/0fea066b52346c331cdf1bf7aed616c8c8896714/confs/face_example.yml#L71) to where your input is. The masks have the value 255 for known regions and 0 for unknown areas (the ones that get generated).
+Copy the config file for the dataset that matches your data best (for faces aligned like CelebA-HQ `_c256`, for diverse images `_inet256`). Then set the [`gt_path`](https://github.com/andreas128/RePaint/blob/0fea066b52346c331cdf1bf7aed616c8c8896714/confs/face_example.yml#L70) and [`mask_path`](https://github.com/andreas128/RePaint/blob/0fea066b52346c331cdf1bf7aed616c8c8896714/confs/face_example.yml#L71) to where your input is. The masks have the value 255 for known regions and 0 for unknown areas (the ones that get generated).
 
 **How to apply it for other datasets?**
 
